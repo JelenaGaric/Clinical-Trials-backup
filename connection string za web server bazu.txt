@@ -1,0 +1,1 @@
+"Data Source=WIN-O16S399DQ68\\SQLEXPRESS;Initial Catalog=ClinicalTrials;MultipleActiveResultSets=true;Integrated Security=True"
