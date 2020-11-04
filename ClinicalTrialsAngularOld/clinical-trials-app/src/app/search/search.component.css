@@ -1,0 +1,85 @@
+tr:hover {
+    cursor: pointer;
+  }
+p{
+  color: #25A18A;
+}
+
+a:hover{
+  cursor: pointer;
+}
+
+.pagination {
+  margin: auto;
+  width: 30%;
+  padding: 10px;
+}
+
+@media screen and (max-width: 450px) {
+  .pagination { margin-left: 5%;}
+}
+
+.pagination a {
+  color: #2cb199;
+  padding: 10px;
+  text-decoration: none;
+}
+.pagination a.active {
+  background-color: rgb(215, 226, 235);
+}
+.pagination a.disabled {
+  cursor: initial;
+}
+.pagination a:hover:not(.active) {background-color: #ddd;}
+
+.btn-ct {
+  float: right;
+  background-color: #69ccba;
+  border: none;
+  color: white;
+  padding: 15px 20px;
+  text-decoration: none;
+  font-size: 16px;
+}
+.btn-ct:hover{
+  background-color:#1f7969
+}
+
+.btn-outline-ct {
+  background-color: white;
+  border-color: #2cb199;
+  color: #2cb199;
+}
+.btn-outline-ct:hover {
+  background-color: #2cb199;
+  color: white;
+}
+.form-control{
+  border-color: #78d4c3;
+}
+
+.card{
+  background: #d2ebe8;
+  margin-bottom: 3rem;
+}
+
+.list-group-item{
+  background-color: #f5fffe;
+}
+
+.list-p{
+  font-weight: 500;
+  color: #1f7969;
+}
+
+.card-title{
+  color: #1f7969;
+}
+
+.card-text{
+  color: #2cb199;
+}
+
+.list-collapse:hover{
+  cursor: pointer;
+}

@@ -1,0 +1,54 @@
+.tag{
+    background: cornflowerblue;
+    margin: 3px;
+}
+
+.closeTag{
+    cursor: pointer;
+}
+
+.dragItem{
+    cursor: pointer;
+}
+
+.next-btn{
+    float: right;
+    color: rgb(104, 103, 112);
+    text-align: center;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.previous-btn{
+    float: left;
+    color: rgb(104, 103, 112);
+    text-align: center;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.tag-list{
+    overflow-y: auto;
+}
+
+.btn-outline-ct {
+    background-color: white;
+    border-color: #2cb199;
+    color: #2cb199;
+}
+.btn-outline-ct:hover {
+    background-color: #2cb199;
+    color: white;
+}
+
+h6{
+    color: #159c84;
+}  
+
+input {
+    border-color: #4bbba6;
+}
+
+.badge{
+    background: #2cb199;
+}

@@ -1,0 +1,67 @@
+/* The sidebar menu */
+.sidenav {
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 12%; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-image: url("../assets/clinical-trials-sidebar.jpg");
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 5%; /* Place content from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+  }
+  
+  /* The navigation menu links */
+  .sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #104e33;
+    display: block;
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  .sidenav a:hover {
+    color: #e4f0ee;
+  }
+    
+  /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 5%;}
+    .sidenav a {font-size: 18px;}
+  }
+  @media (max-width: 700px) { 
+    .sidenav {
+      flex-flow: row nowrap;
+      justify-content: flex-start;
+      width: 0px;
+      margin-left: 0px;
+      padding-top: 5%;
+    }
+  }
+
+  main{
+    margin-left: 20%; /* Same width as the sidebar + left position in px */
+    padding: -50% 10px;
+  }
+
+  .bg-light {
+    background-color:white!important;
+    }
+
+  #banner{
+    background-image: url("../assets/clinical-trials.jpg");
+    margin-top: -4%;
+  }
+
+  .navbar{
+    /*background-image: url("../assets/clinical-trials.jpg");*/
+    background: #eefaf8;
+    height: 60px;
+  }
+
+  .navbar-brand{
+    color: #6f7271;
+    padding: 2px;
+  }

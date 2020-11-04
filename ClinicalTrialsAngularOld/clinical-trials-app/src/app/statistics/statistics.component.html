@@ -1,0 +1,40 @@
+<script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&libraries=&v=weekly"
+  defer
+></script>
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+    <h1>Get statistics</h1>
+    <p class="lead">Fill in condition term below</p>
+    
+    <div class="md-form mb-3">
+      <input class="form-control" type="text" formControlName="Condition" placeholder="Condition or disease" aria-label="Search">
+    </div>
+  
+    <button class="btn btn-outline-ct my-2 my-sm-0" type="submit">Search</button>
+  </form>
+  <div class="stats">
+    <figure id="trialsByYear"></figure>
+    <figure id="studyType"></figure>
+    <figure id="status"></figure>
+    <figure id="phaseList"></figure>
+    <figure id="location"></figure>
+    <figure id="sponsor"></figure>
+    <figure id="duration"></figure>
+  </div>
+
+  <div id="map"></div>
+  <!--
+  <br>
+  <iframe 
+    src="https://e.infogram.com/e24be205-42e0-400e-81e0-7a50097aa61e?src=embed"
+    title="ClinicalTrials" 
+    width="1150" 
+    height="2510" 
+    scrolling="no" 
+    frameborder="0" 
+    style="border:none;" 
+    allowfullscreen="allowfullscreen">
+  </iframe>
+-->
+  

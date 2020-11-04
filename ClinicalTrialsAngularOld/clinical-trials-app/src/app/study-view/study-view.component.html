@@ -1,0 +1,211 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 order-md-1" *ngIf="study != undefined">
+      <button class="btn btn-light previous-btn" (click) = 'previousStudy()'>Previous study</button>
+      <br>
+      <br>
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        Study details 
+      </h4> 
+      <h4 id="studyTitle" class="mb-3" 
+        dndDropzone
+        (dndDragover)="onDragover($event)"
+        (dndDrop)="onDrop($event)">
+        <span class="text-muted" id="studyTitle">
+          {{study.briefTitle}} 
+            <span *ngFor='let droppedTag of droppedTagsOnStudy' class="tag badge badge-secondary">
+              {{droppedTag.description}} 
+                  <span aria-hidden="true" class="closeTag" (click)="deleteAttachedTag(droppedTag.id, 'droppedTagsOnStudy')">&times;</span>
+            </span>
+        </span>
+      </h4>
+      <ul class="list-group mb-3">
+        
+        <li id="conditionList" class="list-group-item d-flex justify-content-between lh-condensed"
+          dndDropzone
+          (dndDragover)="onDragover($event)"
+          (dndDrop)="onDrop($event)">
+          <div id="conditionList">
+            <h6 class="my-0" id="conditionList">Conditions</h6> 
+            <!--<span dndPlaceholderRef id="conditionList" style="border: 1px cornflowerblue solid; border-radius: 5px; padding: 15px;">▼</span>-->
+              <span *ngFor='let droppedTag of droppedTagsOnConditionList' class="tag badge badge-secondary">
+                {{droppedTag.description}} 
+                  <span aria-hidden="true" class="closeTag" (click)="deleteAttachedTag(droppedTag.id, 'droppedTagsOnConditionList')">&times;</span>
+              </span>
+              <br *ngIf='droppedTagsOnConditionList.length != 0'>
+            <small id="conditionList" class="text-muted" 
+              *ngFor="let c of study.condition; index as i;">
+              {{c}} <small>,</small>
+            </small>
+          </div>
+        </li>
+       
+        <li class="list-group-item d-flex justify-content-between lh-condensed"
+          dndDropzone
+          (dndDragover)="onDragover($event)"
+          (dndDrop)="onDrop($event)" id="studyType">
+          <div>
+            <h6 class="my-0">Study Type</h6>
+            <!--<span dndPlaceholderRef id="studyType" style="border: 1px cornflowerblue solid; border-radius: 5px; padding: 15px;">▼</span>-->
+            <span *ngFor='let droppedTag of droppedTagsOnStudyType' class="tag badge badge-secondary">
+              {{droppedTag.description}} 
+                <span aria-hidden="true" class="closeTag" (click)="deleteAttachedTag(droppedTag.id, 'droppedTagsOnStudyType')">&times;</span>
+            </span>
+            <br *ngIf='droppedTagsOnStudyType.length != 0'>
+            <small id="studyType" class="text-muted">{{study.studyType}}</small>
+          </div>
+        </li>
+        
+        <li id="intervention" class="list-group-item d-flex justify-content-between lh-condensed"
+          dndDropzone
+          (dndDragover)="onDragover($event)"
+          (dndDrop)="onDrop($event)"
+          *ngIf = "study.intervention.length > 0">
+          <div>
+            <h6 class="my-0" id="intervention">Intervention</h6>
+            <!--<span dndPlaceholderRef id="intervention" style="border: 1px cornflowerblue solid; border-radius: 5px; padding: 15px;">▼</span>-->
+            <span *ngFor='let droppedTag of droppedTagsOnIntervention' class="tag badge badge-secondary">
+              {{droppedTag.description}} 
+                <span aria-hidden="true" class="closeTag" (click)="deleteAttachedTag(droppedTag.id, 'droppedTagsOnIntervention')">&times;</span>
+            </span>
+            <br *ngIf='droppedTagsOnIntervention.length != 0'>
+            <small class="text-muted" *ngFor="let in of study.intervention; index as i;">
+              {{in.interventionName}}
+            </small>
+          </div>
+        </li>
+
+        <li id="status" class="list-group-item d-flex justify-content-between lh-condensed"
+        dndDropzone
+        (dndDragover)="onDragover($event)"
+        (dndDrop)="onDrop($event)">
+          <div id="status">
+            <h6 id="status" class="my-0">Status</h6>
+            <!--<span dndPlaceholderRef id="status" style="border: 1px cornflowerblue solid; border-radius: 5px; padding: 15px;">▼</span>-->
+            <span *ngFor='let droppedTag of droppedTagsOnStatus' class="tag badge badge-secondary">
+              {{droppedTag.description}} 
+                <span aria-hidden="true" class="closeTag" (click)="deleteAttachedTag(droppedTag.id, 'droppedTagsOnStatus')">&times;</span>
+            </span>
+            <br *ngIf='droppedTagsOnStatus.length != 0'>
+              <small id="status" class="text-success">{{study.overallStatus}}</small> <br>
+              <small id="status" class="text-muted">
+              Date first posted: {{study.studyFirstPostDate | date}}<br>
+              Date last updated: {{study.lastUpdateSubmitDate | date}}
+            </small>
+          </div>
+        </li>
+
+        <li id="locations" class="list-group-item d-flex justify-content-between lh-condensed" 
+          dndDropzone
+          (dndDragover)="onDragover($event)"
+          (dndDrop)="onDrop($event)"
+          *ngIf="study.location.length > 0">
+          <div id="locations">
+            <h6 class="my-0">Locations</h6>
+            <!--<span dndPlaceholderRef id="locations" style="border: 1px cornflowerblue solid; border-radius: 5px; padding: 15px;">▼</span>-->
+            <span *ngFor='let droppedTag of droppedTagsOnLocations' class="tag badge badge-secondary">
+              {{droppedTag.description}} 
+                <span aria-hidden="true" class="closeTag" (click)="deleteAttachedTag(droppedTag.id, 'droppedTagsOnLocations')">&times;</span>
+            </span>
+            <br *ngIf='droppedTagsOnLocations.length != 0'>
+            <small id="locations" class="text-muted" *ngFor="let l of study.location; index as i;">
+              {{l.locationCity}}, {{l.locationCountry}}, {{l.locationFacility}} <br>
+            </small>
+          </div>
+        </li>
+
+        <li id="description" class="list-group-item d-flex justify-content-between bg-light" 
+          dndDropzone
+          (dndDragover)="onDragover($event)"
+          (dndDrop)="onDrop($event)">
+          <div id="description">
+            <h6 id="description" class="my-0">Detailed description</h6>
+            <!--<span dndPlaceholderRef id="description" style="border: 1px cornflowerblue solid; border-radius: 5px; padding: 15px;">▼</span>-->
+            <span *ngFor='let droppedTag of droppedTagsOnDescription' class="tag badge badge-secondary">
+              {{droppedTag.description}} 
+                <span aria-hidden="true" class="closeTag" (click)="deleteAttachedTag(droppedTag.id, 'droppedTagsOnDescription')">&times;</span>
+            </span>
+            <br *ngIf='droppedTagsOnDescription.length != 0'>
+            <small id="description" class="text-muted">{{study.detailedDescription}}</small>
+          </div>
+        </li>
+        <li id="collaborator" class="list-group-item d-flex justify-content-between"
+        dndDropzone
+        (dndDragover)="onDragover($event)"
+        (dndDrop)="onDrop($event)">
+        <div>
+          <h6 id="collaborator">Collaborator/Sponsor</h6>
+          <!--<span dndPlaceholderRef id="collaborator" style="border: 1px cornflowerblue solid; border-radius: 5px; padding: 15px;">▼</span>-->
+          <span *ngFor='let droppedTag of droppedTagsOnCollaborator' class="tag badge badge-secondary">
+            {{droppedTag.description}} 
+              <span aria-hidden="true" class="closeTag" (click)="deleteAttachedTag(droppedTag.id, 'droppedTagsOnCollaborator')">&times;</span>
+          </span>
+          <br *ngIf='droppedTagsOnCollaborator.length != 0'>
+          <strong id="collaborator">{{study.leadSponsorName}}</strong>
+        </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-md-4 order-md-2 mb-4" *ngIf="draggableTags != undefined">
+      <button class="btn btn-light next-btn" (click) = "nextStudy()">Next study</button>
+      <br>
+      <br>
+
+      <h4 class="mb-3">Attach a tag</h4> 
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-muted">Available tags</span>
+        <span class="badge badge-secondary badge-pill">{{draggableTags.length}}</span>
+      </h4>
+      <ul class="list-group mb-3 dragItem tag-list">
+        <li class="list-group-item d-flex justify-content-between" *ngFor = 'let draggableTag of draggableTags'
+        [dndDraggable]="draggableTag.tag"
+        [dndEffectAllowed]="draggableTag.effectAllowed"
+        [dndDisableIf]="draggableTag.disable"
+        (dndStart)="onDragStart($event)"
+        (dndCopied)="onDraggableCopied($event)"
+        (dndLinked)="onDraggableLinked($event)"
+        (dndMoved)="onDraggableMoved($event)"
+        (dndCanceled)="onDragCanceled($event)"
+        (dndEnd)="onDragEnd($event)">
+          <span>{{draggableTag.tag.description}}</span>
+          <strong>
+              <button type="button" class="close" aria-label="Close" (click)="deleteTag(draggableTag.tag.id)">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </strong>
+        </li>
+      </ul>
+
+      <button [hidden] = "isShow" class="btn btn-lg btn-outline-ct" (click)='toggleDisplay()'>Add a tag</button>
+
+      <div [hidden] = "!isShow">
+        <div class="modal-header">
+          <input type="text" class="form-control" placeholder="Description"  [(ngModel)]="tagToAdd.Description" >
+          <button type="button" class="close" aria-label="Close" (click)="toggleDisplay()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <button type="button" class="btn btn-outline-dark" (click)="addTag()">Save</button>
+        </div>
+      </div>
+      
+      
+      <hr>
+      
+      <pre>{{ closeResult }}</pre>
+
+    </div>
+    
+  </div>
+
+  <footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">© 2020 Clinical Trials</p>
+    <ul class="list-inline">
+      <li class="list-inline-item"><a href="#">Privacy</a></li>
+      <li class="list-inline-item"><a href="#">Terms</a></li>
+      <li class="list-inline-item"><a href="#">Support</a></li>
+    </ul>
+  </footer>
+</div>

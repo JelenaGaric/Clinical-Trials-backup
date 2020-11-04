@@ -1,0 +1,14 @@
+
+.btn-outline-ct {
+    background-color: white;
+    border-color: #2cb199;
+    color: #2cb199;
+  }
+  .btn-outline-ct:hover {
+    background-color: #2cb199;
+    color: white;
+  }
+
+  .form-control{
+      border-color: #78d4c3;
+  }
